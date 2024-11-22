@@ -2,6 +2,7 @@
 const Class = require('../models/Class.cjs');
 const Student = require('../models/Student.cjs');
 
+// Create a new class
 exports.createClass = async (req, res) => {
   try {
     const { name, teacherId } = req.body;
@@ -18,6 +19,7 @@ exports.createClass = async (req, res) => {
   }
 };
 
+// Get all classes
 exports.getClasses = async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
@@ -34,6 +36,7 @@ exports.getClasses = async (req, res) => {
   }
 };
 
+// Get a class by ID
 exports.getClassById = async (req, res) => {
   try {
     const classObj = await Class.findById(req.params.id).populate('teacherId');
@@ -46,6 +49,7 @@ exports.getClassById = async (req, res) => {
   }
 };
 
+// Update a class
 exports.updateClass = async (req, res) => {
   try {
     const { name, teacherId } = req.body;
@@ -65,6 +69,7 @@ exports.updateClass = async (req, res) => {
   }
 };
 
+// Delete a class
 exports.deleteClass = async (req, res) => {
   try {
     const classObj = await Class.findById(req.params.id);

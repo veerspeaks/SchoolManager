@@ -1,6 +1,10 @@
 // controllers/studentController.js
 const Student = require('../models/Student.cjs');
 
+// Create a new student
+//An array of objects is also supported beside only one object
+//Both a json and a form data with file upload is supported
+//If a file is uploaded, the file is uploaded to cloudinary and the url is stored in the database
 exports.createStudent = async (req, res) => {
   try {
     const studentsData = Array.isArray(req.body) ? req.body : [req.body]; // Ensure it's always an array
@@ -34,6 +38,7 @@ exports.createStudent = async (req, res) => {
   }
 };
 
+// Get all students
 exports.getStudents = async (req, res) => {
   try {
     const { page = 1, limit = 10, classId } = req.query;
@@ -54,6 +59,7 @@ exports.getStudents = async (req, res) => {
   }
 };
 
+// Get a student by ID
 exports.getStudentById = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id).populate('classId');
@@ -66,6 +72,7 @@ exports.getStudentById = async (req, res) => {
   }
 };
 
+// Update a student
 exports.updateStudent = async (req, res) => {
   try {
     const { name, email, classId } = req.body;
@@ -88,6 +95,7 @@ exports.updateStudent = async (req, res) => {
   }
 };
 
+// Delete a student
 exports.deleteStudent = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);

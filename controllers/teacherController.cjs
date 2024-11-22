@@ -1,6 +1,11 @@
 // controllers/teacherController.js
 const Teacher = require('../models/Teacher.cjs');
 
+
+// Create a new student
+//An array of objects is also supported beside only one object
+//Both a json and a form data with file upload is supported
+//If a file is uploaded, the file is uploaded to cloudinary and the url is stored in the database
 exports.createTeacher = async (req, res) => {
   try {
     const teachersData = Array.isArray(req.body) ? req.body : [req.body]; // Ensure it's always an array

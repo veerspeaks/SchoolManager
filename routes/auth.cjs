@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 
-//Admin login credentials, in real world scenario, this will be stored in database
+//Example dmin login credentials, in real world scenario, this will be stored in database
 const adminCredentials = {
     email: 'admin@example.com',
     password: 'admin123'
